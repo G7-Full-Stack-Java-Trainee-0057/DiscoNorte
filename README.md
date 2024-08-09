@@ -15,3 +15,15 @@ Se ha generado un archivo `docker-compose.yml` que define los servicios necesari
 
 ### 4. Generar las entidades necesarias para ocupar en la app
 Se han creado las entidades Java correspondientes a las tablas de la base de datos. Estas entidades están diseñadas utilizando las dependencias de `Lombok` para minimizar el código boilerplate y `Jakarta Bean Validation` para garantizar que los datos cumplen con las restricciones definidas en la base de datos. Las entidades incluyen relaciones mapeadas con JPA para asegurar la integridad de los datos en el sistema.
+
+## 5. Generación de repositorios para cada entidad
+Se crearon los repositorios para cada entidad, con los siguientes métodos preparados para su futura implementación:
+
+    ```
+    Entidad create(Entidad entidad);
+    Optional<Entidad> findById(Long id);
+    List<Entidad> findAll();
+    Entidad update(Entidad entidad);
+    void delete(Miembro entidad);
+    ```
+
