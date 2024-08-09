@@ -48,11 +48,14 @@ public class InterfaceGenerator {
 
         String content = "package " + packageName + ";\n\n" +
                 "import " + entityPackage + "." + entity.getSimpleName() + ";\n" +
-                "import cl.playground.querygenerator.util.repositorys.GenericRepository;\n" +
+                //"import cl.playground.disconorte.utility.repositorys.GenericRepository;\n" +
+                "import org.springframework.data.jpa.repository.JpaRepository;\n" +
                 "import org.springframework.stereotype.Repository;\n" +
                 "import java.lang." + idClass.getSimpleName() + ";\n\n" +
                 "@Repository\n" +
-                "public interface " + className + " extends GenericRepository<" + entity.getSimpleName() + ", " + idClass.getSimpleName() + "> {\n" +
+                //"public interface " + className + " extends GenericRepository<" + entity.getSimpleName() + ", " + idClass.getSimpleName() + "> {\n" +
+                "public interface " + className + " extends JpaRepository<" + entity.getSimpleName() + ", " + idClass.getSimpleName() + "> {\n" +
+
                 "}";
 
         // Create the directories if they don't exist
