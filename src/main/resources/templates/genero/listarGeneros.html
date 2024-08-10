@@ -14,12 +14,14 @@
             <tr>
                 <th>ID</th>
                 <th style="width: 200%;">Descripción</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="genero : ${generos}">
                 <td th:text="${genero.generoId}"></td>
                 <td th:text="${genero.generoDescripcion}"></td>
+                <td><a th:href="@{/genero/editar/{id}(id=${genero.generoId})}">Editar</a></td>
             </tr>
             </tbody>
         </table>

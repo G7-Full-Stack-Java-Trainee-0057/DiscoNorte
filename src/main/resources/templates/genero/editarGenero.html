@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<head th:replace="~{fragments/head :: head('Lista de Generos')}"></head>
+<head th:replace="~{fragments/head :: head('Editar Género')}"></head>
 <body class="doodle">
 <!-- Contenedor principal centrado -->
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="text-center">
-        <h1>Crear Nuevo Género</h1>
-        <form action="#" th:action="@{/genero/guardar}" th:object="${genero}" method="post" class="doodle-border">
+        <h1>Editar Género</h1>
+        <form th:action="@{/genero/actualizar/{id}(id=${genero.generoId})}" th:object="${genero}" method="post" class="doodle-border">
             <p>
                 <label for="generoDescripcion">Descripción del Género: </label>
                 <input id="generoDescripcion" type="text" th:field="*{generoDescripcion}" placeholder="Ingrese la descripción del género" required>

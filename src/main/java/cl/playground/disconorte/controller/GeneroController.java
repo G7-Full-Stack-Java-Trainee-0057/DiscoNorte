@@ -50,7 +50,7 @@ public class GeneroController {
         Optional<Genero> genero = generoService.findById(id);
         if (genero.isPresent()) {
             model.addAttribute("genero", genero.get());
-            return "editarGenero"; // Nombre de la vista para editar un género
+            return "genero/editarGenero"; // Nombre de la vista para editar un género
         } else {
             return "redirect:/genero"; // Redirige a la lista de géneros si no se encuentra el ID
         }
