@@ -1,0 +1,8 @@
+version: "1"
+sql:
+  - engine: "postgresql"
+    gen:
+      java:
+        pkg: "cl.playground.disconorte"
+        entityPackage: "cl.playground.disconorte.entity"
+        out: "src/main/java/cl/playground/disconorte/repository"
