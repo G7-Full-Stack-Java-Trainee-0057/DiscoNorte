@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Editar Disco')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="text-center">
+    <h1>Editar Disco</h1>
+    <form th:action="@{/disco/actualizar/{id}(id=${disco.discoId})}" th:object="${disco}" method="post" class="doodle-border">
+      <p>
+        <label for="discoNombreArtista">Nombre del Artista: </label>
+        <input id="discoNombreArtista" type="text" th:field="*{discoNombreArtista}" placeholder="Ingrese el nombre del artista" required>
+      </p>
+      <p>
+        <label for="discoTitulo">Título: </label>
+        <input id="discoTitulo" type="text" th:field="*{discoTitulo}" placeholder="Ingrese el título del disco" required>
+      </p>
+      <p>
+        <label for="discoDuracion">Duración: </label>
+        <input id="discoDuracion" type="text" th:field="*{discoDuracion}" placeholder="Ingrese la duración del disco" required>
+      </p>
+      <p>
+        <label for="discoGeneroMusical">Género Musical: </label>
+        <input id="discoGeneroMusical" type="text" th:field="*{discoGeneroMusical}" placeholder="Ingrese el género musical" required>
+      </p>
+      <p>
+        <label for="discoCompania">Compañía: </label>
+        <input id="discoCompania" type="text" th:field="*{discoCompania}" placeholder="Ingrese la compañía" required>
+      </p>
+      <p>
+        <label for="discoStock">Stock: </label>
+        <input id="discoStock" type="number" th:field="*{discoStock}" placeholder="Ingrese el stock disponible" required>
+      </p>
+      <p>
+        <label for="discoPrecio">Precio: </label>
+        <input id="discoPrecio" type="number" th:field="*{discoPrecio}" placeholder="Ingrese el precio del disco" required>
+      </p>
+      <p>
+        <input type="submit" name="submit" value="Guardar Cambios">
+        <a href="/disco" class="btn">Cancelar</a>
+      </p>
+    </form>
+  </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

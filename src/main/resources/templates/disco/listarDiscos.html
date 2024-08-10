@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Lista de Discos')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="text-center">
+    <h1>Listado de Discos</h1>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre del Artista</th>
+        <th>Título</th>
+        <th>Duración</th>
+        <th>Género Musical</th>
+        <th>Compañía</th>
+        <th>Stock</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="disco : ${discoPage.content}">
+        <td th:text="${disco.discoId}"></td>
+        <td th:text="${disco.discoNombreArtista}"></td>
+        <td th:text="${disco.discoTitulo}"></td>
+        <td th:text="${disco.discoDuracion}"></td>
+        <td th:text="${disco.discoGeneroMusical}"></td>
+        <td th:text="${disco.discoCompania}"></td>
+        <td th:text="${disco.discoStock}"></td>
+        <td th:text="${disco.discoPrecio}"></td>
+        <td class="acciones">
+          <!-- Botones para editar y eliminar -->
+          <a th:href="@{/disco/editar/{id}(id=${disco.discoId})}" class="btn btn-outline-warning">Editar</a>
+          <a th:href="@{/disco/eliminar/{id}(id=${disco.discoId})}" class="btn btn-outline-danger"
+             onclick="return confirm('¿Estás seguro de que deseas eliminar este disco?');">Eliminar</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Paginación -->
+    <div class="pagination">
+      <ul>
+        <li th:if="${currentPage > 0}">
+          <a th:href="@{/disco(page=${currentPage - 1})}">&laquo; Anterior</a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+          <a th:href="@{/disco(page=${i})}" th:text="${i + 1}"
+             th:class="${i == currentPage} ? 'active' : ''"></a>
+        </li>
+        <li th:if="${currentPage < totalPages - 1}">
+          <a th:href="@{/disco(page=${currentPage + 1})}">Siguiente &raquo;</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Botón para crear un nuevo disco -->
+    <p>
+      <a href="/disco/crear" class="btn">Crear Nuevo Disco</a>
+    </p>
+  </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>
