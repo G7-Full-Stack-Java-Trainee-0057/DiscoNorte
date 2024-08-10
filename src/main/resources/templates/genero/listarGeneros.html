@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Lista de Generos')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1>Listado de Géneros</h1>
+        <div class="mb-3">
+            <a th:href="@{/genero/crear}">Crear Nuevo Género</a>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th style="width: 200%;">Descripción</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="genero : ${generos}">
+                <td th:text="${genero.generoId}"></td>
+                <td th:text="${genero.generoDescripcion}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>
