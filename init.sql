@@ -19,8 +19,10 @@ CREATE TABLE miembro (
     miembro_apellidos        VARCHAR(100) NOT NULL,
     miembro_email            VARCHAR(100) NOT NULL,
     miembro_fecha_nacimiento DATE         NOT NULL,
+    sucursal_id              INT          NOT NULL,
     tipo_membresia_id        INT          NOT NULL,
     genero_id                INT          NOT NULL,
+    FOREIGN KEY (sucursal_id) REFERENCES  sucursal (sucursal_id),
     FOREIGN KEY (genero_id) REFERENCES genero (genero_id),
     FOREIGN KEY (tipo_membresia_id) REFERENCES tipo_membresia (tipo_membresia_id)
 );
@@ -67,31 +69,32 @@ INSERT INTO genero (genero_descripcion) VALUES ('Masculino');
 
 
 -- Miembros
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Dulcie', 'Uphill', 'duphill0@typepad.com', '1985-01-13', 2, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Renard', 'Tegeller', 'rtegeller1@seattletimes.com', '1968-07-15', 2, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Etti', 'Ecob', 'eecob2@stanford.edu', '1971-12-30', 1, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Marcie', 'Nestoruk', 'mnestoruk3@narod.ru', '1970-07-09', 1, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Ericka', 'Band', 'eband4@google.com.au', '1986-05-14', 1, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Pier', 'Minthorpe', 'pminthorpe5@sohu.com', '1991-04-03', 3, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Aldon', 'Drieu', 'adrieu6@hubpages.com', '1966-03-09', 2, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Rhiamon', 'Rennick', 'rrennick7@uol.com.br', '1980-05-29', 2, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Giffy', 'Corington', 'gcorington8@ustream.tv', '1979-01-25', 3, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Valli', 'Le - Count', 'vlecount9@bbc.co.uk', '1967-09-13', 2, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Caril', 'Borrell', 'cborrella@t.co', '1978-05-05', 2, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Penny', 'Eccleshare', 'peccleshareb@businesswire.com', '1981-03-19', 2, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Hilda', 'O Towey', 'hotoweyc@home.pl', '1994-08-08', 1, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Meir', 'Cropton', 'mcroptond@webmd.com', '1978-06-08', 3, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Krystle', 'Broschek', 'kbroscheke@fema.gov', '1974-03-11', 2, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Bing', 'Haseley', 'bhaseleyf@dyndns.org', '2000-09-27', 2, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Merola', 'Laurenceau', 'mlaurenceaug@dagondesign.com', '1969-02-16', 1, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Jim', 'Naish', 'jnaishh@jalbum.net', '1994-11-15', 3, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Arleta', 'MacAllaster', 'amacallasteri@tmall.com', '1996-07-13', 3, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Millicent', 'Wibrew', 'mwibrewj@bing.com', '1978-08-21', 1, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Katrina', 'Roadknight', 'kroadknightk@xinhuanet.com', '2003-03-23', 1, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Arley', 'Priestnall', 'apriestnalll@linkedin.com', '1989-02-26', 2, 1);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Grange', 'Caron', 'gcaronm@cnn.com', '1970-06-06', 1, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Janenna', 'Challin', 'jchallinn@hexun.com', '1986-07-30', 2, 2);
-INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, tipo_membresia_id, genero_id) VALUES ('Juliana', 'Bealing', 'jbealingo@fc2.com', '1993-11-27', 3, 2);
+-- Inserciones en la tabla miembro con el campo sucursal_id
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Dulcie', 'Uphill', 'duphill0@typepad.com', '1985-01-13', 1, 2, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Renard', 'Tegeller', 'rtegeller1@seattletimes.com', '1968-07-15', 2, 2, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Etti', 'Ecob', 'eecob2@stanford.edu', '1971-12-30', 1, 1, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Marcie', 'Nestoruk', 'mnestoruk3@narod.ru', '1970-07-09', 2, 1, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Ericka', 'Band', 'eband4@google.com.au', '1986-05-14', 1, 1, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Pier', 'Minthorpe', 'pminthorpe5@sohu.com', '1991-04-03', 2, 3, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Aldon', 'Drieu', 'adrieu6@hubpages.com', '1966-03-09', 1, 2, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Rhiamon', 'Rennick', 'rrennick7@uol.com.br', '1980-05-29', 2, 2, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Giffy', 'Corington', 'gcorington8@ustream.tv', '1979-01-25', 1, 3, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Valli', 'Le - Count', 'vlecount9@bbc.co.uk', '1967-09-13', 2, 2, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Caril', 'Borrell', 'cborrella@t.co', '1978-05-05', 1, 2, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Penny', 'Eccleshare', 'peccleshareb@businesswire.com', '1981-03-19', 2, 2, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Hilda', 'O Towey', 'hotoweyc@home.pl', '1994-08-08', 1, 1, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Meir', 'Cropton', 'mcroptond@webmd.com', '1978-06-08', 2, 3, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Krystle', 'Broschek', 'kbroscheke@fema.gov', '1974-03-11', 1, 2, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Bing', 'Haseley', 'bhaseleyf@dyndns.org', '2000-09-27', 2, 2, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Merola', 'Laurenceau', 'mlaurenceaug@dagondesign.com', '1969-02-16', 1, 1, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Jim', 'Naish', 'jnaishh@jalbum.net', '1994-11-15', 2, 3, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Arleta', 'MacAllaster', 'amacallasteri@tmall.com', '1996-07-13', 1, 3, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Millicent', 'Wibrew', 'mwibrewj@bing.com', '1978-08-21', 2, 1, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Katrina', 'Roadknight', 'kroadknightk@xinhuanet.com', '2003-03-23', 1, 1, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Arley', 'Priestnall', 'apriestnalll@linkedin.com', '1989-02-26', 2, 2, 1);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Grange', 'Caron', 'gcaronm@cnn.com', '1970-06-06', 1, 1, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Janenna', 'Challin', 'jchallinn@hexun.com', '1986-07-30', 2, 2, 2);
+INSERT INTO miembro (miembro_nombre, miembro_apellidos, miembro_email, miembro_fecha_nacimiento, sucursal_id, tipo_membresia_id, genero_id) VALUES ('Juliana', 'Bealing', 'jbealingo@fc2.com', '1993-11-27', 1, 3, 2);
 
 -- discos
 INSERT INTO disco (disco_nombre_artista, disco_titulo, disco_duracion, disco_genero_musical, disco_compania, disco_stock, disco_precio) VALUES ('Layton Constantine', 'Eleocharis occulta S.G. Sm.', 90, 'pop', 'Edgetag', 9, 12000);

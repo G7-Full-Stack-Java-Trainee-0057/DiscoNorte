@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Lista de Miembros')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="text-center">
+    <h1>Listado de Miembros</h1>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Email</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Sucursal</th>
+        <th>Tipo de Membresía</th>
+        <th>Género</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="miembro : ${miembroPage.content}">
+        <td th:text="${miembro.miembroId}"></td>
+        <td th:text="${miembro.miembroNombre}"></td>
+        <td th:text="${miembro.miembroApellidos}"></td>
+        <td th:text="${miembro.miembroEmail}"></td>
+        <td th:text="${#temporals.format(miembro.miembroFechaNacimiento, 'dd/MM/yyyy')}"></td>
+        <td th:text="${miembro.sucursal.sucursalDescripcion}"></td> <!-- Mostrar la sucursal -->
+        <td th:text="${miembro.tipoMembresia.tipoMembresiaDescripcion}"></td>
+        <td th:text="${miembro.genero.generoDescripcion}"></td>
+        <td class="acciones">
+          <!-- Botones para editar y eliminar -->
+          <a th:href="@{/miembro/editar/{id}(id=${miembro.miembroId})}" class="btn btn-outline-warning">Editar</a>
+          <a th:href="@{/miembro/eliminar/{id}(id=${miembro.miembroId})}" class="btn btn-outline-danger"
+             onclick="return confirm('¿Estás seguro de que deseas eliminar este miembro?');">Eliminar</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Paginación -->
+    <div class="pagination">
+      <ul>
+        <li th:if="${currentPage > 0}">
+          <a th:href="@{/miembro(page=${currentPage - 1})}">&laquo; Anterior</a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+          <a th:href="@{/miembro(page=${i})}" th:text="${i + 1}"
+             th:class="${i == currentPage} ? 'active' : ''"></a>
+        </li>
+        <li th:if="${currentPage < totalPages - 1}">
+          <a th:href="@{/miembro(page=${currentPage + 1})}">Siguiente &raquo;</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Botón para crear un nuevo miembro -->
+    <p>
+      <a href="/miembro/crear" class="btn">Crear Nuevo Miembro</a>
+    </p>
+  </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

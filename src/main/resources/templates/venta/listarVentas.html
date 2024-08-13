@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Lista de Ventas')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1>Listado de Ventas</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Miembro</th>
+                <th>Disco</th>
+                <th>Cantidad</th>
+                <th>Sucursal</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="venta : ${ventaPage.content}">
+                <td th:text="${venta.ventaMiembroId}"></td>
+                <td th:text="${venta.miembro.miembroNombre + ' ' + venta.miembro.miembroApellidos}"></td>
+                <td th:text="${venta.disco.discoTitulo}"></td>
+                <td th:text="${venta.ventaMiembroCantidad}"></td>
+                <td th:text="${venta.sucursal.sucursalDescripcion}"></td>
+                <td class="acciones">
+                    <!-- Botones para editar y eliminar -->
+                    <a th:href="@{/venta/editar/{id}(id=${venta.ventaMiembroId})}" class="btn btn-outline-warning">Editar</a>
+                    <a th:href="@{/venta/eliminar/{id}(id=${venta.ventaMiembroId})}" class="btn btn-outline-danger"
+                       onclick="return confirm('¿Estás seguro de que deseas eliminar esta venta?');">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Paginación -->
+        <div class="pagination">
+            <ul>
+                <li th:if="${currentPage > 0}">
+                    <a th:href="@{/venta(page=${currentPage - 1})}">&laquo; Anterior</a>
+                </li>
+                <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/venta(page=${i})}" th:text="${i + 1}"
+                       th:class="${i == currentPage} ? 'active' : ''"></a>
+                </li>
+                <li th:if="${currentPage < totalPages - 1}">
+                    <a th:href="@{/venta(page=${currentPage + 1})}">Siguiente &raquo;</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Botón para crear una nueva venta -->
+        <p>
+            <a href="/venta/crear" class="btn">Registrar Nueva Venta</a>
+        </p>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

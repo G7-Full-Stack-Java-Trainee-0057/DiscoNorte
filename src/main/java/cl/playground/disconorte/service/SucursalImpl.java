@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,11 @@ public class SucursalImpl implements ISucursalService {
     @Transactional(readOnly = true)
     public Page<Sucursal> findAll(Pageable pageable) {
         return sucursalRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Sucursal> findAll() {
+        return sucursalRepository.findAll();
     }
 
     @Override

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Crear Nuevo Miembro')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1>Crear Nuevo Miembro</h1>
+        <form action="#" th:action="@{/miembro/guardar}" th:object="${miembro}" method="post" class="doodle-border">
+            <p>
+                <label for="miembroNombre">Nombre del miembro: </label>
+                <input id="miembroNombre" type="text" th:field="*{miembroNombre}" placeholder="Ingrese el nombre del miembro" required>
+            </p>
+            <p>
+                <label for="miembroApellidos">Apellidos del miembro: </label>
+                <input id="miembroApellidos" type="text" th:field="*{miembroApellidos}" placeholder="Ingrese los apellidos del miembro" required>
+            </p>
+            <p>
+                <label for="miembroEmail">Email del miembro: </label>
+                <input id="miembroEmail" type="email" th:field="*{miembroEmail}" placeholder="Ingrese el email del miembro" required>
+            </p>
+            <p>
+                <label for="miembroFechaNacimiento">Fecha de Nacimiento: </label>
+                <input id="miembroFechaNacimiento" type="date" th:field="*{miembroFechaNacimiento}" required>
+            </p>
+            <p>
+                <label for="sucursal">Sucursal: </label>
+                <select id="sucursal" th:field="*{sucursal.sucursalId}" required>
+                    <option value="" disabled selected>Seleccione la sucursal</option>
+                    <option th:each="suc : ${sucursales}" th:value="${suc.sucursalId}" th:text="${suc.sucursalDescripcion}"></option>
+                </select>
+            </p>
+            <p>
+                <label for="tipoMembresia">Tipo de Membresía: </label>
+                <select id="tipoMembresia" th:field="*{tipoMembresia.tipoMembresiaId}" required>
+                    <option value="" disabled selected>Seleccione el tipo de membresía</option>
+                    <option th:each="tipo : ${tiposMembresia}" th:value="${tipo.tipoMembresiaId}" th:text="${tipo.tipoMembresiaDescripcion}"></option>
+                </select>
+            </p>
+            <p>
+                <label for="genero">Género: </label>
+                <select id="genero" th:field="*{genero.generoId}" required>
+                    <option value="" disabled selected>Seleccione el género</option>
+                    <option th:each="gen : ${generos}" th:value="${gen.generoId}" th:text="${gen.generoDescripcion}"></option>
+                </select>
+            </p>
+            <p>
+                <input type="submit" name="submit" value="Guardar">
+                <input type="reset" name="reset" value="Reiniciar formulario">
+            </p>
+        </form>
+        <button><a th:href="@{/miembro}" class="btn">Cancelar</a></button>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

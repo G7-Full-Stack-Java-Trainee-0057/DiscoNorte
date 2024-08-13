@@ -37,6 +37,11 @@ public class Miembro {
 
     @NotNull
     @ManyToOne
+    @JoinColumn(nullable = false, name = "sucursal_id")
+    private Sucursal sucursal;
+
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "tipo_membresia_id", nullable = false)
     private TipoMembresia tipoMembresia;
 

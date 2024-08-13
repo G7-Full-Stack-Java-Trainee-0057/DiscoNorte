@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface IDiscoService {
     Disco save(Disco disco);
     Page<Disco> findAll(Pageable pageable);
+    List<Disco> findAll();
     Optional<Disco> findById(Long id);
     Disco update(Disco disco);
     void delete(Disco disco);

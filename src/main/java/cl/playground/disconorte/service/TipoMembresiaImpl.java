@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,11 @@ public class TipoMembresiaImpl implements ITipoMembresiaService {
     @Transactional(readOnly = true)
     public Page<TipoMembresia> findAll(Pageable pageable) {
         return tipoMembresiaRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<TipoMembresia> findAll() {
+        return tipoMembresiaRepository.findAll();
     }
 
     @Override

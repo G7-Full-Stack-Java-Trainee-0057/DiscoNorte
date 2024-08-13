@@ -32,6 +32,11 @@ public class DIscoImpl implements IDiscoService {
     }
 
     @Override
+    public List<Disco> findAll() {
+        return discoRepository.findAll();
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public Optional<Disco> findById(Long id) {
         return discoRepository.findById(id);
