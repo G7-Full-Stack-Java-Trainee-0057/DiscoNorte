@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Lista de sucursales')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1>Listado de Sucursales</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th style="width: 200%;">Sucursal</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sucursal : ${sucursalPage.content}">
+                <td th:text="${sucursal.sucursalId}"></td>
+                <td th:text="${sucursal.sucursalDescripcion}"></td>
+                <td class="acciones">
+                    <!-- Botones para editar y eliminar -->
+                    <a th:href="@{/sucursal/editar/{id}(id=${sucursal.sucursalId})}" class="btn btn-outline-warning">Editar</a>
+                    <a th:href="@{/sucursal/eliminar/{id}(id=${sucursal.sucursalId})}" class="btn btn-outline-danger"
+                       onclick="return confirm('¿Estás seguro de que deseas eliminar esta sucursal?');">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Paginación -->
+        <div class="pagination">
+            <ul>
+                <li th:if="${currentPage > 0}">
+                    <a th:href="@{/sucursal(page=${currentPage - 1})}">&laquo; Anterior</a>
+                </li>
+                <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/sucursal(page=${i})}" th:text="${i + 1}"
+                       th:class="${i == currentPage} ? 'active' : ''"></a>
+                </li>
+                <li th:if="${currentPage < totalPages - 1}">
+                    <a th:href="@{/sucursal(page=${currentPage + 1})}">Siguiente &raquo;</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Botón para crear un nueva sucursal -->
+        <p>
+            <a href="/sucursal/crear" class="btn">Crear Nueva Sucursal</a>
+        </p>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

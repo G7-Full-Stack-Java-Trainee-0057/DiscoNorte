@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Editar Membresía')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1>Editar Membresía</h1>
+        <form th:action="@{/membresia/actualizar/{id}(id=${tipoMembresia.tipoMembresiaId})}" th:object="${tipoMembresia}" method="post" class="doodle-border">
+            <p>
+                <label for="tipoMembresiaDescripcion">Descripción de la Membresía: </label>
+                <input id="tipoMembresiaDescripcion" type="text" th:field="*{tipoMembresiaDescripcion}" placeholder="Ingrese la descripción de la Membresía" required>
+            </p>
+            <p>
+                <input type="submit" name="submit" value="Guardar">
+                <input type="reset" name="reset" value="Reiniciar formulario">
+            </p>
+        </form>
+        <button><a th:href="@{/membresia}" class="btn">Cancelar</a></button>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>
