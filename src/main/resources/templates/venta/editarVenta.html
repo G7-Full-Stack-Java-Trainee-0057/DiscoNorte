@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Editar Venta')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1>Editar Venta</h1>
+        <form th:action="@{/venta/actualizar/{id}(id=${ventaMiembro.ventaMiembroId})}" th:object="${ventaMiembro}" method="post" class="doodle-border">
+            <p>
+                <label for="miembro">Miembro: </label>
+                <select id="miembro" th:field="*{miembro.miembroId}" required>
+                    <option value="" disabled>Seleccione el miembro</option>
+                    <option th:each="miembro : ${miembros}" th:value="${miembro.miembroId}" th:text="${miembro.miembroNombre} + ' ' + ${miembro.miembroApellidos}"
+                            th:selected="${miembro.miembroId == ventaMiembro.miembro.miembroId}"></option>
+                </select>
+            </p>
+            <p>
+                <label for="disco">Disco: </label>
+                <select id="disco" th:field="*{disco.discoId}" required>
+                    <option value="" disabled>Seleccione el disco</option>
+                    <option th:each="disco : ${discos}" th:value="${disco.discoId}" th:text="${disco.discoTitulo}"
+                            th:selected="${disco.discoId == ventaMiembro.disco.discoId}"></option>
+                </select>
+            </p>
+            <p>
+                <label for="ventaMiembroCantidad">Cantidad: </label>
+                <input id="ventaMiembroCantidad" type="number" th:field="*{ventaMiembroCantidad}" placeholder="Ingrese la cantidad" min="1" required>
+            </p>
+            <p>
+                <label for="sucursal">Sucursal: </label>
+                <select id="sucursal" th:field="*{sucursal.sucursalId}" required>
+                    <option value="" disabled>Seleccione la sucursal</option>
+                    <option th:each="sucursal : ${sucursales}" th:value="${sucursal.sucursalId}" th:text="${sucursal.sucursalDescripcion}"
+                            th:selected="${sucursal.sucursalId == ventaMiembro.sucursal.sucursalId}"></option>
+                </select>
+            </p>
+            <p>
+                <input type="submit" name="submit" value="Actualizar">
+                <input type="reset" name="reset" value="Reiniciar formulario">
+            </p>
+        </form>
+        <button><a th:href="@{/venta}" class="btn">Cancelar</a></button>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

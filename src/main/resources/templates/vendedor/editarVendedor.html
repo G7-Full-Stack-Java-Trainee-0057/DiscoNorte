@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{fragments/head :: head('Editar Vendedor')}"></head>
+<body class="doodle">
+<!-- Contenedor principal centrado -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="text-center">
+    <h1>Editar Vendedor</h1>
+    <form th:action="@{/vendedor/actualizar/{id}(id=${vendedor.vendedorId})}" th:object="${vendedor}" method="post" class="doodle-border">
+      <p>
+        <label for="vendedorNombre">Nombre del Vendedor: </label>
+        <input id="vendedorNombre" type="text" th:field="*{vendedorNombre}" placeholder="Ingrese el nombre del vendedor" required>
+      </p>
+      <p>
+        <label for="vendedorApellidos">Apellidos del Vendedor: </label>
+        <input id="vendedorApellidos" type="text" th:field="*{vendedorApellidos}" placeholder="Ingrese los apellidos del vendedor" required>
+      </p>
+      <p>
+        <label for="sucursal">Sucursal: </label>
+        <select id="sucursal" th:field="*{sucursal.sucursalId}" required>
+          <option value="" disabled>Seleccione la sucursal</option>
+          <option th:each="suc : ${sucursales}" th:value="${suc.sucursalId}" th:text="${suc.sucursalDescripcion}"
+                  th:selected="${suc.sucursalId == vendedor.sucursal.sucursalId}"></option>
+        </select>
+      </p>
+      <p>
+        <input type="submit" name="submit" value="Actualizar">
+        <input type="reset" name="reset" value="Reiniciar formulario">
+      </p>
+    </form>
+    <button><a th:href="@{/vendedor}" class="btn">Cancelar</a></button>
+  </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>
